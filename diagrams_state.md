@@ -4,7 +4,7 @@
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Requested: Sales подаёт запрос<br/>(email / form / AI-parse)
+    [*] --> Requested: Sales подаёт запрос
 
     Requested --> InReview: Юрист берёт в работу
     Requested --> Cancelled: Отмена запроса
@@ -18,16 +18,16 @@ stateDiagram-v2
 
     InReview --> SentToSign: Отправлен в DocuSign
 
-    SentToSign --> Signed: Обе стороны подписали<br/>(DocuSign completed)
+    SentToSign --> Signed: Обе стороны подписали
     SentToSign --> InReview: Контрагент отклонил
 
-    Signed --> PendingReview: Авто-загрузка<br/>(вариант B: черновик)
-    Signed --> Registered: Авто-загрузка<br/>(вариант A: полный авто)
+    Signed --> PendingReview: Авто-загрузка (черновик)
+    Signed --> Registered: Авто-загрузка (полный авто)
 
-    PendingReview --> Registered: Юрист проверил<br/>и подтвердил
+    PendingReview --> Registered: Юрист проверил и подтвердил
 
     Registered --> Active: Дата начала наступила
-    Active --> Expiring: За 30 дней до окончания<br/>(авто-уведомление)
+    Active --> Expiring: За 30 дней до окончания
     Expiring --> Renewed: Продлён
     Expiring --> Expired: Срок истёк
 
@@ -47,7 +47,7 @@ stateDiagram-v2
 
     note right of Active
         Pre-payment check:
-        Agreement Status = Active → Pass
+        Status = Active означает Pass
     end note
 ```
 
@@ -55,16 +55,16 @@ stateDiagram-v2
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Accepted: Контрагент акцептовал<br/>на портале
+    [*] --> Accepted: Контрагент акцептовал на портале
 
-    Accepted --> Synced: Событие из backend<br/>→ запись в Airtable
+    Accepted --> Synced: Событие из backend в Airtable
 
-    Synced --> Active: Автоматически<br/>(акцепт = начало действия)
+    Synced --> Active: Акцепт = начало действия
 
-    Active --> Expiring: Приближается дата<br/>окончания (если есть)
-    Active --> Superseded: Заменён Self-form<br/>agreement
+    Active --> Expiring: Приближается дата окончания
+    Active --> Superseded: Заменён Self-form agreement
     
-    Expiring --> Renewed: Автопродление<br/>(если предусмотрено)
+    Expiring --> Renewed: Автопродление
     Expiring --> Expired: Срок истёк
     Renewed --> Active
     
@@ -72,7 +72,7 @@ stateDiagram-v2
     Superseded --> [*]
 
     note right of Accepted
-        Бэкенд портала фиксирует:
+        Бэкенд фиксирует:
         user_id, timestamp, версия
     end note
 
@@ -88,34 +88,34 @@ stateDiagram-v2
 stateDiagram-v2
     direction LR
 
-    state "📥 Входящий" as input {
+    state "Входящий" as input {
         Offer_Accepted: Оферта принята
         SF_Requested: Self-form запрошен
     }
 
-    state "⚙️ Согласование" as process {
+    state "Согласование" as process {
         In_Review: На ревью
         Sent_to_Sign: На подписании
     }
 
-    state "📋 Реестр" as registry {
+    state "Реестр" as registry {
         Pending_Review: Ожидает проверки
         Registered: Зарегистрирован
     }
 
-    state "✅ Действующий" as lifecycle {
+    state "Действующий" as lifecycle {
         Active: Активен
         Expiring: Истекает
     }
 
-    state "📦 Архив" as archive {
+    state "Архив" as archive {
         Expired: Истёк
         Renewed: Продлён
         Superseded: Заменён
     }
 
     [*] --> input
-    Offer_Accepted --> Registered: Авто (через sync)
+    Offer_Accepted --> Registered: Авто через sync
     SF_Requested --> In_Review
     In_Review --> Sent_to_Sign
     Sent_to_Sign --> Pending_Review: DocuSign completed
