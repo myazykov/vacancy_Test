@@ -14,7 +14,7 @@
 | 🎯 [diagrams_to_be.md](diagrams_to_be.md) | TO-BE: Sequence Diagrams с развилками решений |
 | 🔄 [diagrams_state.md](diagrams_state.md) | State Diagrams: жизненный цикл договора (Self-form + Offer) |
 | 🗄️ [data_model_and_exchanges.md](data_model_and_exchanges.md) | Модель данных (ER), схемы обмена, JSON-контракты, обработка ошибок |
-| 🌐 [docs/analysis.html](docs/analysis.html) | Интерактивный отчёт (GitHub Pages): контекст, AS-IS, GAP, TO-BE, риски, roadmap, вопросы |
+| 🌐 [Интерактивный отчёт](https://myazykov.github.io/Emex_Test/) | **[Открыть →](https://myazykov.github.io/Emex_Test/)** Контекст, AS-IS, GAP, TO-BE, риски, roadmap, вопросы |
 
 ---
 
@@ -234,7 +234,7 @@ gantt
 ### Анализ
 
 - [📋 Реестр требований](requirements.md) — FR/NFR/Constraints, статусы Confirmed/Derived/Open, трассируемость
-- [🌐 Интерактивный отчёт](docs/analysis.html) — полный анализ с навигацией (GitHub Pages)
+- [🌐 Интерактивный отчёт](https://myazykov.github.io/Emex_Test/) — полный анализ с навигацией (GitHub Pages)
 
 ### Диаграммы
 
@@ -264,7 +264,7 @@ gantt
 
 ## Открытые вопросы
 
-Полный список из 21 вопроса с привязкой к развилкам — в [интерактивном отчёте, раздел «Вопросы»](docs/analysis.html) и в [requirements.md, раздел 5](requirements.md#5-нерешённые-требования-зависят-от-open-questions).
+Полный список из 23 вопросов с привязкой к развилкам — в [интерактивном отчёте, раздел «Вопросы»](https://myazykov.github.io/Emex_Test/) и в [requirements.md, раздел 5](requirements.md#5-нерешённые-требования-зависят-от-open-questions).
 
 Ключевые вопросы, блокирующие финализацию:
 
